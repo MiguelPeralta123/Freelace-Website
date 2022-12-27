@@ -15,11 +15,38 @@ body {
     font-family: 'Krub', sans-serif;
 }
 
-.titulo {
+.title {
     text-align: center;
     font-size: 3.8rem;
 }
 
 span {
     font-size: 2rem;
+}
+
+.container {
+    width: 100rem;
+    margin: 0 auto;
+}
+
+.nav-bg {
+    background-color: var(--second);
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 1rem;
+}
+
+.main-nav a:hover {
+    background-color: var(--first);
+    color: var(--black);
 }
