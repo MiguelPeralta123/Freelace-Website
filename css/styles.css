@@ -1,52 +1,215 @@
 :root {
-    --white: #ffffff;
-    --black: #212121;
-    --first: #ffc107;
-    --second: #0097a7;
-    --third: #757575;
+  --white: #ffffff;
+  --black: #212121;
+  --first: #ffc107;
+  --second: #0097a7;
+  --third: #757575;
 }
 
+/* Globales */
 html {
-    font-size: 62.5%;
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+/* El box-sizing en html junto con esto sirven para poder definir el tamaño de un elemento y que despues no se afecte con margin o padding */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 body {
-    font-size: 16px;
-    font-family: 'Krub', sans-serif;
-}
-
-.title {
-    text-align: center;
-    font-size: 3.8rem;
-}
-
-span {
-    font-size: 2rem;
+  font-size: 16px;
+  font-family: "Krub", sans-serif;
+  background-image: linear-gradient(to top, #dfe9f3 0%, var(--white) 100%);
 }
 
 .container {
-    width: 100rem;
-    margin: 0 auto;
+  max-width: 120rem;
+  margin: 0 auto;
 }
 
+.button {
+  background-color: var(--second);
+  color: var(--white);
+  padding: 1rem 3rem;
+  margin-top: 1rem;
+  font-size: 2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  width: 90%;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .button {
+    width: auto;
+  }
+}
+
+.shadow {
+  /* Sombra creada en cssmatic */
+  box-shadow: 0px 5px 15px 0px rgba(105, 105, 105, 0.5);
+
+  background-color: var(--white);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+/* Tipografía */
+h1 {
+  font-size: 3.8rem;
+}
+
+h2 {
+  font-size: 2.8rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+
+/* Titulos */
+.title {
+  text-align: center;
+  font-size: 3.8rem;
+}
+
+span {
+  font-size: 2rem;
+}
+
+/* Navegación principal */
 .nav-bg {
-    background-color: var(--second);
+  background-color: var(--second);
 }
 
 .main-nav {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .main-nav {
+    flex-direction: row;
     justify-content: space-between;
+  }
 }
 
 .main-nav a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 2rem;
-    font-weight: bold;
-    padding: 1rem;
+  display: block;
+  text-align: center;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem;
 }
 
 .main-nav a:hover {
-    background-color: var(--first);
-    color: var(--black);
+  background-color: var(--first);
+  color: var(--black);
+}
+
+/* Hero */
+.hero {
+  background-image: url(../img/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 450px;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.hero-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 70%);
+
+  /* Este código sirve para alinear vertical y horizontalmente, flex-direction no es necesario */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content h2,
+.hero-content p {
+  color: var(--white);
+}
+
+/* Services */
+@media (min-width: 768px) {
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 1rem; /* Añade un margen entre los elementos */
+
+    /* grid-template-columns es para crear columnas
+    grid-template-rows es para crear filas */
+
+    /* Estos 3 siguientes hacen lo mismo */
+    /* 33.3%  33.3%  33.3% */
+    /* 1fr 1fr 1fr */
+    /* repeat(3, 1fr) */
+  }
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service h3 {
+  color: var(--second);
+  font-weight: normal;
+}
+
+.service .icons {
+  height: 15rem;
+  width: 15rem;
+  background-color: var(--first);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.service p {
+  line-height: 2; /* Aumentando el interlineado */
+  text-align: center;
+}
+
+/* Contacto */
+.form {
+  background-color: var(--third);
+  width: min(60rem, 100%); /* Utiliza el valor mas pequeño entre los dos que le pasamos */
+  margin: 0 auto; /* Centrando el formulario */
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.form fieldset {
+  border: none;
+}
+
+.form legend {
+  margin: 0 auto;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--first);
 }
