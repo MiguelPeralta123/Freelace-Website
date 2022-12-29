@@ -9,7 +9,18 @@
 /* Globales */
 html {
   font-size: 62.5%;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Hack para box model */
+
+  /* Este selector y el de abajo son para que el scroll se detenga en las partes mas importantes de la pagina */
+  scroll-snap-type: y mandatory;
+}
+
+/* Esto tambien es para detener el scroll */
+.main-nav,
+.services,
+.form {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 
 /* El box-sizing en html junto con esto sirven para poder definir el tamaño de un elemento y que despues no se afecte con margin o padding */
@@ -42,6 +53,11 @@ body {
   border-radius: 0.5rem;
   width: 90%;
   text-align: center;
+  border: none;
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 @media (min-width: 768px) {
@@ -86,6 +102,27 @@ h3 {
 
 span {
   font-size: 2rem;
+}
+
+/* Utilidades */
+/* El enfoque de utilidades es una forma de escribir CSS donde se tiene una propiedad para cada selector */
+/* El otro enfoque es el de modulos, donde cada selector corresponde a un elemento HTML */
+.w-sm-100 {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.right-align {
+  justify-content: flex-end;
+}
+
+@media (min-width: 768px) {
+  .w-sm-100 {
+    width: auto;
+  }
 }
 
 /* Navegación principal */
@@ -212,4 +249,54 @@ span {
   font-weight: bold;
   margin-bottom: 2rem;
   color: var(--first);
+}
+
+@media (min-width: 768px) {
+  .field-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1rem;
+    grid-template-rows: auto auto 20rem;
+  }
+
+  /* si tenemos varios elementos class="field", nth-child sirve para seleccionar solo uno, en este caso el tercero */
+  .field:nth-child(3), .field:nth-child(4) {
+    /* Esto sirve para que el campo se extienda desde la columna 1 a la 3 */
+    grid-column: 1 / 3;
+  }
+
+  .extra-padding {
+    padding-top: 3.5rem;
+  }
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.field label {
+  color: var(--white);
+  font-weight: bold;
+  margin-bottom: .5rem;
+  display: block;
+}
+
+.field input {
+}
+
+.input-text {
+  width: 100%;
+  border: none;
+  padding: 1.5rem;
+  border-radius: .5rem;
+}
+
+.field textarea {
+  height: 20rem;
+}
+
+/* Footer */
+/* Según la especifidad, tiene mas peso una clase footer (.footer) que un selector normal (footer) */
+.footer {
+  text-align: center;
 }
